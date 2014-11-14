@@ -12,21 +12,22 @@ var Drawer = (function() {
     }
 
     Drawer.prototype.drawBoard = function() {
-        var context = this.context;
+        var ctx = this.context;
         var canvas = this.canvas;
-        context.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.lineWidth = 2;
         for (var i = 0; i <= 640; i += 40) { //绘制棋盘的线
-            context.beginPath();
-            context.moveTo(0, i);
-            context.lineTo(640, i);
-            context.closePath();
-            context.stroke();
+            ctx.beginPath();
+            ctx.moveTo(0, i);
+            ctx.lineTo(640, i);
+            ctx.closePath();
+            ctx.stroke();
 
-            context.beginPath();
-            context.moveTo(i, 0);
-            context.lineTo(i, 640);
-            context.closePath();
-            context.stroke();
+            ctx.beginPath();
+            ctx.moveTo(i, 0);
+            ctx.lineTo(i, 640);
+            ctx.closePath();
+            ctx.stroke();
         }
     }
 

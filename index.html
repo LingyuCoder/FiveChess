@@ -3,15 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <style type="text/css">
+        body {
+            font-family: "Microsoft YaHei" sans-serif;
+        }
+        .board {
+            margin: auto;
+            padding: 20px;
+            background-image: url('img/back.png');
+            width: 640px;
+            height: 640px;
+            border: 2px solid #333;
+            border-radius: 20px;
+        }
+        .board canvas {
+            outline: 2px solid #333;
+        }
+        button {
+            display: block;
+            margin: 20px auto 0 auto;
+            border: none;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div>
+    <div class="board">
         <canvas width="640" id="canvas" height="640">你的浏览器不支持HTML5 canvas，请换高级浏览器
         </canvas>
     </div>
-    <button id="start">开始游戏</button>
-    <script type="text/javascript" src="./FiveChess.js"></script>
-    <script type="text/javascript" src="./Drawer.js"></script>
-    <script type="text/javascript" src="./game.js"></script>
+    <button id="start">重新开始</button>
+    <script type="text/javascript" src="FiveChess.js"></script>
+    <script type="text/javascript" src="Drawer.js"></script>
+    <script type="text/javascript" src="game.js"></script>
 </body>
 </html>
