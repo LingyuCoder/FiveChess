@@ -11,34 +11,120 @@
             margin: auto;
             padding: 20px;
             background-image: url('img/back.png');
-            width: 640px;
-            height: 640px;
+            width: 860px;
+            height: 660px;
             border: 2px solid #333;
             border-radius: 20px;
         }
         .board canvas {
-            outline: 2px solid #333;
+            border: 2px solid #333;
+            cursor: pointer;
         }
-        button {
-            display: block;
-            margin: 20px auto 0 auto;
+        .buttons,
+        .playerPanel {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .hide {
+            display: none !important;
+        }
+        .button {
+            display: inline-block;
             border: none;
             padding: 10px;
             background: #333;
             color: #fff;
-            font-size: 20px;
+            font-size: 16px;
+            margin-right: 10px;
+            cursor: pointer;
+            font-weight: bolder;
+        }
+        .button:disabled {
+            background-color: #bbb;
+        }
+
+        .profile {
+            position: relative;
+            float: right;
+            height: 640px;
+            width: 200px;
+        }
+        .buttons {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .chess {
+            overflow: hidden;            
+        }
+        #aiRadio:checked ~ label:nth-of-type(1) > .button {
+            padding: 8px;
+            border: 2px solid #333;
+            background-color: #fff;
+            color: #333;
+        }
+        #playerRadio:checked ~ label:nth-of-type(2) > .button {
+            padding: 8px;
+            border: 2px solid #333;
+            background-color: #fff;
+            color: #333;
         }
     </style>
+    <script type="text/javascript">
+        var WEBSOCKETADDR = 'ws://localhost:2999';
+    </script>
 </head>
 <body>
     <div class="board">
-        <canvas width="640" id="canvas" height="640">
-            你的浏览器不支持HTML5 canvas，请换高级浏览器
-        </canvas>
+        <div class="profile">
+            <div class="self" id="selfPanel">
+                <h1>玩家一</h1>
+                <dl>
+                    <dt>姓名：</dt>
+                    <dd class="name"></dd>
+                </dl>
+                <dl>
+                    <dt>胜场：</dt>
+                    <dd class="win"></dd>
+                </dl>
+            </div>
+            <div class="enermy" id="enermyPanel">
+                <h1>玩家二</h1>
+                <dl>
+                    <dt>姓名：</dt>
+                    <dd class="name"></dd>
+                </dl>
+                <dl>
+                    <dt>胜场：</dt>
+                    <dd class="win"></dd>
+                </dl>
+            </div>
+            <div class="buttons">
+                <input type="radio" name="gameType" id="aiRadio" class="hide">
+                <input type="radio" name="gameType" id="playerRadio" class="hide">
+                <label for="aiRadio">
+                    <span id="ai" class="button">人机对战</span>
+                </label>
+                <label for="playerRadio">
+                    <span id="player" class="button">玩家对战</span>
+                </label>
+                <div id="playerPanel" class="playerPanel">
+                    <button class="button" id="link">连接</button>
+                    <button class="button" id="playerStart">开始</button>
+                    <button class="button" id="playerFail">认输</button>
+                </div>
+            </div>
+        </div>
+        <div class="chess">
+            <canvas width="640" id="canvas" height="640">
+                你的浏览器不支持HTML5 canvas，请换高级浏览器
+            </canvas>
+        </div>
     </div>
-    <button id="start">重新开始</button>
-    <script type="text/javascript" src="FiveChess.js"></script>
-    <script type="text/javascript" src="Drawer.js"></script>
-    <script type="text/javascript" src="game.js"></script>
+    
+    <script type="text/javascript" src="lib/peertc-min.js"></script>
+    <script type="text/javascript" src="js/FiveChess.js"></script>
+    <script type="text/javascript" src="js/Drawer.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
 </body>
 </html>
