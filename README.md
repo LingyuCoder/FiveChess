@@ -23,5 +23,8 @@ $ npm start
 
 **PS：如果不在一台机子上的话，记得修改index.html的head中的WEBSOCKETADDR地址为启动服务的地址**
 
+##依赖和兼容性
+玩家对战模式依赖[peertc](https://github.com/LingyuCoder/peertc)，其优先使用WebRTC DataChannel，不支持时使用WebSocket，请保证浏览器至少能够支持WebSocket
+
 ##License
 MIT
